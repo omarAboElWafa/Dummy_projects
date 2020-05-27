@@ -39,8 +39,8 @@ def forward(img_number):
     prev_button.grid(row=1, column=0)
     img_label.grid(row=0, column=0, columnspan=3)
     status = Label(root, text="Image " + str(img_number) +
-                   " of " + str(len(image_List)))
-    status.grid(row=2, column=1)
+                   " of " + str(len(image_List)), bd=1, relief=SUNKEN, anchor=E)
+    status.grid(row=2, column=0, columnspan=3, sticky=W+E)
 
 
 def back(img_number):
@@ -63,16 +63,17 @@ def back(img_number):
     img_label.grid(row=0, column=0, columnspan=3)
 
     status = Label(root, text="Image " + str(img_number) +
-                   " of " + str(len(image_List)))
-    status.grid(row=2, column=1)
+                   " of " + str(len(image_List)), bd=1, relief=SUNKEN, anchor=E)
+    status.grid(row=2, column=0, columnspan=3, sticky=W+E)
 
 
 next_button = Button(root, text=">>", command=lambda: forward(2))
 prev_button = Button(root, text="<<", command=back, state=DISABLED)
 quit_button = Button(root, text="Quit", command=root.quit)
 
-status = Label(root, text="Image 1 of " + str(len(image_List)))
-status.grid(row=2, column=1)
+status = Label(root, text="Image 1 of " +
+               str(len(image_List)), bd=1, relief=SUNKEN, anchor=E)
+status.grid(row=2, column=0, columnspan=3, sticky=W+E)
 
 next_button.grid(row=1, column=1)
 prev_button.grid(row=1, column=0)
