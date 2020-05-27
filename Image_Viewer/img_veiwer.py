@@ -16,6 +16,7 @@ img5 = ImageTk.PhotoImage(Image.open("images_for_try/5.jpg"))
 image_List = [img1, img2, img3, img4, img5]
 current_img = image_List[0]
 
+
 img_label = Label(root, image=current_img)
 img_label.grid(row=0, column=0, columnspan=3)
 
@@ -24,6 +25,7 @@ def forward(img_number):
     global img_label
     global next_button
     global prev_button
+
     img_label.grid_forget()
     img_label = Label(image=image_List[img_number-1])
     next_button = Button(
@@ -36,6 +38,9 @@ def forward(img_number):
     next_button.grid(row=1, column=1)
     prev_button.grid(row=1, column=0)
     img_label.grid(row=0, column=0, columnspan=3)
+    status = Label(root, text="Image " + str(img_number) +
+                   " of " + str(len(image_List)))
+    status.grid(row=2, column=1)
 
 
 def back(img_number):
@@ -57,10 +62,17 @@ def back(img_number):
     prev_button.grid(row=1, column=0)
     img_label.grid(row=0, column=0, columnspan=3)
 
+    status = Label(root, text="Image " + str(img_number) +
+                   " of " + str(len(image_List)))
+    status.grid(row=2, column=1)
+
 
 next_button = Button(root, text=">>", command=lambda: forward(2))
 prev_button = Button(root, text="<<", command=back, state=DISABLED)
 quit_button = Button(root, text="Quit", command=root.quit)
+
+status = Label(root, text="Image 1 of " + str(len(image_List)))
+status.grid(row=2, column=1)
 
 next_button.grid(row=1, column=1)
 prev_button.grid(row=1, column=0)
